@@ -1,0 +1,21 @@
+@layout('layouts.guest')
+
+
+
+@section('content')
+    <div class="container" style="margin-top: 80px">
+        <h1>Adonis Js - Login</h1>
+        
+        <form class="form" action="{{ route('login.check') }}" method="POST">
+            {{ csrfField() }}
+            <input type="email" {{ hasErrorFor('email') ? 'is-invalid' : '' }} name="email" placeholder="Email">
+            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+            <input type="password" {{ hasErrorFor('password') ? 'is-invalid' : '' }} name="password" placeholder="Password">
+            {{ elIf('<span class="text-danger">$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+            <button class="button" type="submit" id="login-button">Login</button>
+        </form>
+    </div>
+
+    
+    
+@endsection
